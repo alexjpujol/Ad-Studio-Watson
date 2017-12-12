@@ -1,0 +1,44 @@
+{
+  "name": "adstudio-watson",
+  "version": "1.0.0",
+  "description": "Alex's AdStudio chatbot",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "istanbul cover ./node_modules/mocha/bin/_mocha",
+    "lint": "eslint .",
+    "autofix": "eslint --fix .",
+    "codecov": "npm run test && (codecov || true)"
+  },
+  "dependencies": {
+    "basic-auth-connect": "1.0.0",
+    "body-parser": "1.15.1",
+    "cloudant": "1.4.1",
+    "dotenv": "^2.0.0",
+    "express": "4.13.4",
+    "express-csv": "0.6.0",
+    "nano": "*",
+    "uuid": "2.0.2",
+    "vcap_services": "^0.2.0",
+    "watson-developer-cloud": "^2.37.0"
+  },
+  "devDependencies": {
+    "babel-eslint": "^6.0.4",
+    "codecov": "^1.0.1",
+    "eslint": "^2.8.0",
+    "eslint-config-airbnb-es5": "^1.0.9",
+    "eslint-plugin-react": "^5.1.1",
+    "istanbul": "^0.4.2",
+    "mocha": "^2.4.5",
+    "supertest": "^1.2.0"
+  },
+  "engine": {
+    "node": ">= 4.2.4"
+  },
+  "keywords": [
+    "adstudio",
+    "watson"
+  ],
+  "author": "Alex Pujol",
+  "license": "ISC"
+}
