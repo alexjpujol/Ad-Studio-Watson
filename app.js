@@ -25,31 +25,50 @@ const conversation = watson.conversation( {
 
 let previousContext = null;
 
-app.post('/message', (req, res) => {
-    console.log("request initiated");
-    console.log(req);
-
-
-
-    // if (res.intents.length > 0) {
-    //     console.log(`Detected intent: #${response.intents[0].intent}, ${response.entities[0].entity}`);
-    // }
-
-    // if (res.output.text.length != 0) {
-    //     console.log(response.output.text[0]);
-    //     return response.output.text[0];
-    // }
-    conversation.message({
-        input: {text: "How do I get access"},
-    }, processResponse)  
-})
-
-const processResponse = (err, response) => {
+//initiate the chat
+conversation.message({
+    workspace_id: process.env.CONVERSATION_WORKSPACE_ID,
+    input: {'text': ""}
+    },  function(err, response) {
     if (err) {
-        console.log("error: ", err);
-    } else {
-        console.log(JSON.stringify(response, null, 2));
+        console.log('error:', err);
     }
-}
+    else {
+        console.log(response.output.text[0]);
+        return response.output.text[0];
+    }
+});
+
+
+// conversation.message({
+//     workspace_id: process.env.CONVERSATION_WORKSPACE_ID,
+//     input: {'text': ""}
+//   },  function(err, response) {
+//     if (err) {
+//         console.log('error:', err);
+//     }
+//     else {
+//         console.log(response.output.text[0]);
+//         return response.output.text[0];
+//     }
+//   });
+
+app.post('/message',  function(req, res) {
+
+    conversation.message({
+        workspace_id: process.env.CONVERSATION_WORKSPACE_ID,
+        input: {'text': "How do I get access?"}
+      },  function(err, response) {
+        if (err) {
+            console.log('error:', err);
+        }
+        else {
+            //console.log(JSON.stringify(response, null, 2));
+            console.log(response.output.text[0]);
+            return res.send(JSON.stringify(response, null, 2));
+        }
+      });
+
+})
 
 module.exports = app;

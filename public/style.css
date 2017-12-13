@@ -1,4 +1,22 @@
-.input {
-    position: absolute;
-    bottom: 0px
+nav {
+    width: 100%;
+    border-bottom: 1px solid black;
+}
+
+h1 {
+    text-align: center;
+}
+
+.chat-form {
+    position: fixed;
+    bottom: 2%;
+    right: 50%;
+}
+
+.chat-form input {
+    width: 200px
+}
+
+#submit_chat {
+    width: 75px
 }
