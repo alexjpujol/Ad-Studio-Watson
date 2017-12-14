@@ -2,15 +2,20 @@
 <html>
     <head>
         <title>Ad Studio Chat</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">        
         <link href="style.css" rel="stylesheet">
     </head>
     <body>
         <header>
             <nav>
+                <img src="spotify.png">
                 <h1>Ad Studio Help Chat</h1>
             </nav>
         </header>
         <div class="container">
+            <div class="conversation">
+                <ul id="conversation_list"></ul>
+            </div>
             <div class="chat-form">
                 <input type="text" name="chat" id="chat_input" />
                 <button type="submit" id="submit_chat">Send</button>

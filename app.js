@@ -39,20 +39,6 @@ conversation.message({
     }
 });
 
-
-// conversation.message({
-//     workspace_id: process.env.CONVERSATION_WORKSPACE_ID,
-//     input: {'text': ""}
-//   },  function(err, response) {
-//     if (err) {
-//         console.log('error:', err);
-//     }
-//     else {
-//         console.log(response.output.text[0]);
-//         return response.output.text[0];
-//     }
-//   });
-
 app.post('/message',  function(req, res) {
 
     conversation.message({
@@ -63,8 +49,6 @@ app.post('/message',  function(req, res) {
             console.log('error:', err);
         }
         else {
-            //console.log(JSON.stringify(response, null, 2));
-            console.log(response.output.text[0]);
             return res.send(JSON.stringify(response, null, 2));
         }
       });

@@ -1,21 +1,35 @@
-const Api = (function() {
-    let apiEndpoint = new Request("/message");
+(function() {
+    let apiEndpoint = "/message";
     let submitButton = document.getElementById("submit_chat");
     let textInput = document.getElementById("chat_input");
 
-    submitButton.addEventListener("click", (e) => {
+    //event listener on send button
+    submitButton.addEventListener("click", async (e) => {
         let message = textInput.value;
         textInput.value = "";
-        handleApi(message);
-    })
-    
-   async function handleApi(message) {
+        let chatResponse = await handleApi(message);
+        let convo = document.getElementById("conversation_list");
+        let chatNode = document.createElement("li");
+        chatNode.innerText = chatReponse;
+        convo.appendChild(chatNode);
+    });
+   
+    //makes the AJAX call to Watson API
+    function handleApi(message) {
        try {
-           let result = await fetch(apiEndpoint, {method: 'POST', body: message});
-           console.log(`final result: ${result.blob()}`);
+        var http = new XMLHttpRequest();
+        http.open('POST', apiEndpoint, true);
+        http.setRequestHeader('Content-type', 'application/json');
+        http.onreadystatechange = function() {
+          if (http.readyState === 4 && http.status === 200 && http.responseText) {
+            let text = JSON.parse(http.responseText);
+            return text.output.text[0];
+          }
+        };
+        http.send();
        }
        catch(error) {
             console.error(error);
        }
-    }
+    };
 })()
