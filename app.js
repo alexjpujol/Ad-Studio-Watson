@@ -25,26 +25,29 @@ const conversation = watson.conversation( {
 
 let previousContext = null;
 
-//initiate the chat
-conversation.message({
-    workspace_id: process.env.CONVERSATION_WORKSPACE_ID,
-    input: {'text': ""}
-    },  function(err, response) {
-    if (err) {
-        console.log('error:', err);
-    }
-    else {
-        console.log(response.output.text[0]);
-        return response.output.text[0];
-    }
-});
-
 app.post('/message',  function(req, res) {
 
-    conversation.message({
-        workspace_id: process.env.CONVERSATION_WORKSPACE_ID,
-        input: {'text': "How do I get access?"}
-      },  function(err, response) {
+    console.log(req)
+
+    let watsonPayload = {
+        workspace_id: process.env.CONVERSATION_WORKSPACE_ID
+    }
+
+    if (req.body.input.text) {
+        watsonPayload.input = {'text': req.body.input.text}
+    } else {
+        watsonPayload.input = {'text': ""}
+    }
+
+    if (req.body.context) {
+        watsonPayload.context = req.body.context;
+    } else {
+        watsonPayload.context = previousContext;
+    }
+
+    console.log(watsonPayload);
+
+    conversation.message(watsonPayload,  function(err, response) {
         if (err) {
             console.log('error:', err);
         }
