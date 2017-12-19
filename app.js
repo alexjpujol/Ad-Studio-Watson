@@ -27,8 +27,7 @@ let previousContext = null;
 
 app.post('/message',  function(req, res) {
 
-    console.log(req)
-
+    console.log(req);
     let watsonPayload = {
         workspace_id: process.env.CONVERSATION_WORKSPACE_ID
     }
@@ -41,11 +40,10 @@ app.post('/message',  function(req, res) {
 
     if (req.body.context) {
         watsonPayload.context = req.body.context;
+        previousContext = req.body.context;
     } else {
         watsonPayload.context = previousContext;
     }
-
-    console.log(watsonPayload);
 
     conversation.message(watsonPayload,  function(err, response) {
         if (err) {
@@ -55,7 +53,6 @@ app.post('/message',  function(req, res) {
             return res.send(JSON.stringify(response, null, 2));
         }
       });
-
 })
 
 module.exports = app;

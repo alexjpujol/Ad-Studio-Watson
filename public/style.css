@@ -1,13 +1,13 @@
 nav {
     background-color: black;
     height: 10%;
+    text-align: center;
 }
 
 nav h1 {
     display: inline-block;
     color: white;
     vertical-align: middle;
-    text-align: center;
 }
 
 nav img {
@@ -15,6 +15,34 @@ nav img {
     max-height: 15vh;
     padding: 10px;
     display: inline-block;
+}
+
+.conversation {
+    margin-top: 2%
+}
+
+.watson_chat {
+    border-radius: 25px;
+    width: auto;
+    padding: 1.5%;
+    background-color: rgba(204, 217, 221, 0.671);
+    max-width: 50%;
+    margin: 1%
+}
+
+.user_chat {
+    background-color: rgba(99, 203, 108, 0.7);
+    width: auto;
+    max-width: 50%;
+    border-radius: 25px;
+    margin: 1%;
+    padding: 1.5%;
+    text-align: right;
+
+}
+
+#conversation_list {
+    list-style-type: none;
 }
 
 .chat-form {

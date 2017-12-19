@@ -3,12 +3,28 @@
     let apiEndpoint = "/message";
     let submitButton = document.getElementById("submit_chat");
     let textInput = document.getElementById("chat_input");
+    let convo = document.getElementById("conversation_list");
     let requestHeaders = {'Content-type': 'application/json'};
+    let chatID = Math.floor(Math.random() * 1000000);
 
-    function buildChatNode(chatResponse) {
-        let convo = document.getElementById("conversation_list");
+
+    function getUserChat() {
+        let chatText = textInput.value;
+        return chatText;
+    }
+
+    function buildWatsonChatNode(chatResponse) {
         let chatNode = document.createElement("li");
+        chatNode.className = "watson_chat"
         chatNode.innerText = chatResponse;
+        convo.appendChild(chatNode);
+        return;
+    }
+
+    function buildUserChatNode() {
+        let chatNode = document.createElement("li");
+        chatNode.className = "user_chat";
+        chatNode.innerText = getUserChat();
         convo.appendChild(chatNode);
         return;
     }
@@ -24,18 +40,17 @@
 
     function sendWatsonChat() {
 
-        let chatText = textInput.value;
+        let chatText = getUserChat();
         let currentContext = context.next().value;
         
         textInput.value = "";
-        console.log(chatText);
 
         let options = {
             method: "POST",
             headers: requestHeaders,
             body: JSON.stringify({input: 
                 {"text": chatText},
-                context: {currentContext}
+                context: {counter: currentContext, chatID: chatID}
             })
         }
 
@@ -45,7 +60,7 @@
             }
         }).then((data) => {
             let chatResponse = data.output.text[0];
-            buildChatNode(chatResponse);
+            buildWatsonChatNode(chatResponse);
         }).catch((error) => {
             console.error(error);
         })  
@@ -55,6 +70,7 @@
     sendWatsonChat();
 
     //attach event handler
+    submitButton.addEventListener("click", buildUserChatNode);
     submitButton.addEventListener("click", sendWatsonChat);
 
 })();
