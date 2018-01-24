@@ -27,7 +27,6 @@ let previousContext = null;
 
 app.post('/message',  function(req, res) {
 
-    console.log(req);
     let watsonPayload = {
         workspace_id: process.env.CONVERSATION_WORKSPACE_ID
     }
@@ -50,6 +49,7 @@ app.post('/message',  function(req, res) {
             console.log('error:', err);
         }
         else {
+            console.log(response.intents);
             return res.send(JSON.stringify(response, null, 2));
         }
       });

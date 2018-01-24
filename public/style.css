@@ -1,3 +1,7 @@
+body { 
+    font-family: Helvetica;
+}
+
 nav {
     background-color: black;
     height: 10%;
@@ -17,42 +21,90 @@ nav img {
     display: inline-block;
 }
 
+.container {
+    width: 60%
+}
+
 .conversation {
+    height: 80vh;
+    overflow: scroll;
     margin-top: 2%
 }
 
+#conversation-list {
+    margin-top: 2%;
+    display: inline-block;
+}
+
+li {
+    list-style-type: none;
+}
+
 .watson_chat {
+    clear: both;
+    position: relative;
+    float: left;
     border-radius: 25px;
-    width: auto;
-    padding: 1.5%;
+    padding: 1em;
     background-color: rgba(204, 217, 221, 0.671);
     max-width: 50%;
-    margin: 1%
+    padding: 1em;
+    margin: 1%;
+    box-shadow: 3px 3px 10px
 }
 
 .user_chat {
+    clear: both;
+    position: relative;
+    float: right;
     background-color: rgba(99, 203, 108, 0.7);
-    width: auto;
     max-width: 50%;
     border-radius: 25px;
     margin: 1%;
-    padding: 1.5%;
+    padding: 1em;
     text-align: right;
+    color: white;
+    box-shadow: 3px 3px 10px darkgrey;
+} 
 
+/* Right triangle, right side slightly down*/
+
+.bubble:after,
+.bubble:before {
+    right: 100%;
+    top: 50%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
 }
 
-#conversation_list {
-    list-style-type: none;
+.bubble:after {
+    border-color: rgba(255, 255, 204, 0);
+    border-right-color: #FFFFCC;
+    border-width: 15px;
+    margin-top: -15px;
+}
+.bubble:before {
+    border-color: rgba(255, 204, 0, 0);
+    border-right-color: #FFCC00;
+    border-width: 16px;
+    margin-top: -16px;
 }
 
 .chat-form {
     position: fixed;
     bottom: 2%;
-    right: 50%;
+    right: 30%;
+    text-align: center;
+    width: 50%
 }
 
 .chat-form input {
-    width: 200px
+    border-radius: 10px;
+    width: inherit
 }
 
 #submit_chat {

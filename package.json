@@ -2,10 +2,9 @@
   "name": "adstudio-watson",
   "version": "1.0.0",
   "description": "Alex's AdStudio chatbot",
-  "main": "server.js",
+  "main": "app.js",
   "scripts": {
-    "start": "node server.js",
-    "test": "istanbul cover ./node_modules/mocha/bin/_mocha",
+    "start": "nodemon app.js",
     "lint": "eslint .",
     "autofix": "eslint --fix .",
     "codecov": "npm run test && (codecov || true)"
