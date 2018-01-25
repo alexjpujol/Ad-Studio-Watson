@@ -73,6 +73,16 @@
     submitButton.addEventListener("click", buildUserChatNode);
     submitButton.addEventListener("click", sendWatsonChat);
     //window.addEventListener("onkeypress", handleEnter);
-    
+
+    //scroll the chat
+    setInterval(function() {
+        let div = document.getElementById("conversation");
+        let isScrolledToBottom = div.scrollHeight - div.clientHeight <= div.scrollTop + 1;
+
+        if (!isScrolledToBottom) {
+            div.scrollTop = div.scrollHeight - div.clientHeight;
+        }
+
+    }, 500)
 
 })();

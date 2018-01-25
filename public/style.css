@@ -1,5 +1,5 @@
 body { 
-    font-family: Helvetica;
+    font-family: Courier New, Courier, monospace;
 }
 
 nav {
@@ -25,15 +25,17 @@ nav img {
     width: 60%
 }
 
-.conversation {
-    height: 80vh;
+#conversation {
+    height: 70vh;
     overflow: scroll;
-    margin-top: 2%
+    margin-top: 2%;
+    margin-bottom: 1%
 }
 
 #conversation-list {
     margin-top: 2%;
     display: inline-block;
+    overflow:scroll
 }
 
 li {
@@ -46,7 +48,7 @@ li {
     padding: 1em;
     max-width: 50%;
     margin: 2%;
-    box-shadow: 3px 3px 10px
+    /* box-shadow: 3px 3px 10px */
 }
 
 /* bubble css from https://leaverou.github.io/bubbly/ */
@@ -54,7 +56,7 @@ li {
 .speech-bubble.watson_chat {
 	position: relative;
 	background: rgb(204, 217, 221);
-	border-radius: 1em;
+	/* border-radius: 1em; */
 }
 
 .speech-bubble.watson_chat:after {
@@ -81,13 +83,13 @@ li {
     padding: 1em;
     text-align: right;
     color: white;
-    box-shadow: 3px 3px 10px darkgrey;
+    /* box-shadow: 3px 3px 10px darkgrey; */
 }
 
 .speech-bubble.user_chat {
 	position: relative;
 	background: rgb(99, 203, 108);
-	border-radius: .8em;
+	/* border-radius: 1em; */
 }
 
 .speech-bubble.user_chat:after {
