@@ -15,7 +15,7 @@
 
     function buildWatsonChatNode(chatResponse) {
         let chatNode = document.createElement("li");
-        chatNode.className = "watson_chat bubble"
+        chatNode.className = "watson_chat speech-bubble"
         chatNode.innerText = chatResponse;
         convo.appendChild(chatNode);
         return;
@@ -23,7 +23,7 @@
 
     function buildUserChatNode() {
         let chatNode = document.createElement("li");
-        chatNode.className = "user_chat bubble";
+        chatNode.className = "user_chat speech-bubble";
         chatNode.innerText = getUserChat();
         convo.appendChild(chatNode);
         return;

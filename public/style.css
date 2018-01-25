@@ -42,57 +42,69 @@ li {
 
 .watson_chat {
     clear: both;
-    position: relative;
     float: left;
-    border-radius: 25px;
     padding: 1em;
-    background-color: rgba(204, 217, 221, 0.671);
     max-width: 50%;
-    padding: 1em;
-    margin: 1%;
+    margin: 2%;
     box-shadow: 3px 3px 10px
+}
+
+/* bubble css from https://leaverou.github.io/bubbly/ */
+
+.speech-bubble.watson_chat {
+	position: relative;
+	background: rgb(204, 217, 221);
+	border-radius: 1em;
+}
+
+.speech-bubble.watson_chat:after {
+	content: '';
+	position: absolute;
+	left: 0;
+	top: 50%;
+	width: 0;
+	height: 0;
+	border: 29px solid transparent;
+	border-right-color: rgb(204, 217, 221);
+	border-left: 0;
+	border-top: 0;
+	margin-top: -14.5px;
+	margin-left: -29px;
 }
 
 .user_chat {
     clear: both;
-    position: relative;
     float: right;
-    background-color: rgba(99, 203, 108, 0.7);
     max-width: 50%;
-    border-radius: 25px;
-    margin: 1%;
+    margin: 2%;
+    margin-right: 30px;
     padding: 1em;
     text-align: right;
     color: white;
     box-shadow: 3px 3px 10px darkgrey;
-} 
-
-/* Right triangle, right side slightly down*/
-
-.bubble:after,
-.bubble:before {
-    right: 100%;
-    top: 50%;
-    border: solid transparent;
-    content: " ";
-    height: 0;
-    width: 0;
-    position: absolute;
-    pointer-events: none;
 }
 
-.bubble:after {
-    border-color: rgba(255, 255, 204, 0);
-    border-right-color: #FFFFCC;
-    border-width: 15px;
-    margin-top: -15px;
+.speech-bubble.user_chat {
+	position: relative;
+	background: rgb(99, 203, 108);
+	border-radius: .8em;
 }
-.bubble:before {
-    border-color: rgba(255, 204, 0, 0);
-    border-right-color: #FFCC00;
-    border-width: 16px;
-    margin-top: -16px;
+
+.speech-bubble.user_chat:after {
+	content: '';
+	position: absolute;
+	right: 0;
+	top: 50%;
+	width: 0;
+	height: 0;
+	border: 29px solid transparent;
+	border-left-color: rgb(99, 203, 108);
+	border-right: 0;
+	border-bottom: 0;
+	margin-top: -14.5px;
+	margin-right: -29px;
 }
+
 
 .chat-form {
     position: fixed;
