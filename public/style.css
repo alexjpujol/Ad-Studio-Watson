@@ -1,5 +1,5 @@
 body { 
-    font-family: Courier New, Courier, monospace;
+    /* font-family: Courier New, Courier, monospace; */
 }
 
 nav {
@@ -29,13 +29,16 @@ nav img {
     height: 70vh;
     overflow: scroll;
     margin-top: 2%;
-    margin-bottom: 1%
+    margin-bottom: 1%;
+    display: flex;
+    flex-direction: column;
+    align-content: flex-end
+
 }
 
 #conversation-list {
     margin-top: 2%;
-    display: inline-block;
-    overflow:scroll
+    overflow: scroll;
 }
 
 li {
@@ -45,7 +48,7 @@ li {
 .watson_chat {
     clear: both;
     float: left;
-    padding: 1em;
+    padding: 0.8em;
     max-width: 50%;
     margin: 2%;
     /* box-shadow: 3px 3px 10px */
@@ -80,7 +83,7 @@ li {
     max-width: 50%;
     margin: 2%;
     margin-right: 30px;
-    padding: 1em;
+    padding: 0.8em;
     text-align: right;
     color: white;
     /* box-shadow: 3px 3px 10px darkgrey; */

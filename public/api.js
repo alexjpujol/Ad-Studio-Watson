@@ -18,6 +18,7 @@
         chatNode.className = "watson_chat speech-bubble"
         chatNode.innerText = chatResponse;
         convo.appendChild(chatNode);
+        scrollChat();
         return;
     }
 
@@ -26,6 +27,7 @@
         chatNode.className = "user_chat speech-bubble";
         chatNode.innerText = getUserChat();
         convo.appendChild(chatNode);
+        scrollChat();
         return;
     }
 
@@ -72,17 +74,21 @@
     //attach event handler
     submitButton.addEventListener("click", buildUserChatNode);
     submitButton.addEventListener("click", sendWatsonChat);
-    //window.addEventListener("onkeypress", handleEnter);
+    textInput.addEventListener("keydown", function(e) {
+        if (e.keyCode == 13) {
+            buildUserChatNode();
+            textInput.value = "";
+        }
+    });
 
     //scroll the chat
-    setInterval(function() {
+    function scrollChat() {
         let div = document.getElementById("conversation");
         let isScrolledToBottom = div.scrollHeight - div.clientHeight <= div.scrollTop + 1;
 
         if (!isScrolledToBottom) {
             div.scrollTop = div.scrollHeight - div.clientHeight;
         }
-
-    }, 500)
+    }
 
 })();
