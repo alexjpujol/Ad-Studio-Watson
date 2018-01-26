@@ -19,7 +19,7 @@ const conversation = watson.conversation( {
     username: process.env.CONVERSATION_USERNAME || '<username>',
     password: process.env.CONVERSATION_PASSWORD || '<password>',
     path: {workspace_id: process.env.CONVERSATION_WORKSPACE_ID || '<workspace_id>'},
-    version_date: process.env.CONVERSATION_VERSION_DATE,
+    version_date: process.env.CONVERSATION_VERSION_DATE || '2017-05-26',
     version: 'v1'
   });
 
