@@ -77,6 +77,7 @@
     textInput.addEventListener("keydown", function(e) {
         if (e.keyCode == 13) {
             buildUserChatNode();
+            sendWatsonChat();
             textInput.value = "";
         }
     });
