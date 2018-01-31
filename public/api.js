@@ -15,9 +15,14 @@
 
     function buildWatsonChatNode(chatResponse) {
         let chatNode = document.createElement("li");
-        chatNode.className = "watson_chat speech-bubble"
+        chatNode.className = "watson_chat speech-bubble on-appear"
         chatNode.innerText = chatResponse;
         convo.appendChild(chatNode);
+        setTimeout(() => {
+            chatNode.classList.remove("on-appear")
+        }, 300)
+        //chatNode.classList.remove("on-appear");
+
         scrollChat();
         return;
     }

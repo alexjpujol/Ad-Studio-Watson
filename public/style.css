@@ -51,7 +51,13 @@ li {
     padding: 0.8em;
     max-width: 50%;
     margin: 2%;
-    /* box-shadow: 3px 3px 10px */
+    box-shadow: 3px 3px 10px darkgrey;
+    transition: box-shadow 0.3s ease-in-out;
+}
+
+.watson_chat:hover, .user_chat:hover {
+    transition: box-shadow 0.3s ease-in-out;
+    box-shadow: 3px 3px 10px black;
 }
 
 /* bubble css from https://leaverou.github.io/bubbly/ */
@@ -59,64 +65,71 @@ li {
 .speech-bubble.watson_chat {
 	position: relative;
 	background: rgb(204, 217, 221);
-	/* border-radius: 1em; */
+	border-radius: 0.8em;
 }
 
 .speech-bubble.watson_chat:after {
 	content: '';
 	position: absolute;
 	left: 0;
-	top: 50%;
 	width: 0;
-	height: 0;
-	border: 29px solid transparent;
+    height: 0;
+    top: 50%;
+	border: 15px solid transparent;
 	border-right-color: rgb(204, 217, 221);
 	border-left: 0;
 	border-top: 0;
 	margin-top: -14.5px;
-    margin-left: -29px;
+    margin-left: -15px;
 }
 
 .user_chat {
     clear: both;
     float: right;
-    max-width: 50%;
+    max-width: 40%;
     margin: 2%;
     margin-right: 30px;
     padding: 0.8em;
-    text-align: right;
+    text-align: left;
     color: white;
-    /* box-shadow: 3px 3px 10px darkgrey; */
+    box-shadow: 3px 3px 10px darkgrey;
+    transition: box-shadow 0.3s ease-in-out;
 }
 
 .speech-bubble.user_chat {
 	position: relative;
 	background: rgb(99, 203, 108);
-	/* border-radius: 1em; */
+	border-radius: 0.8em;
 }
 
 .speech-bubble.user_chat:after {
 	content: '';
 	position: absolute;
 	right: 0;
-	top: 50%;
+	top: 70%;
 	width: 0;
 	height: 0;
-	border: 29px solid transparent;
+	border: 15px solid transparent;
 	border-left-color: rgb(99, 203, 108);
 	border-right: 0;
 	border-bottom: 0;
 	margin-top: -14.5px;
-	margin-right: -29px;
+	margin-right: -15px;
+}
+
+/* transition when chat appears */
+
+.on-appear {
+    transform: translateY(50px)
 }
 
 
 .chat-form {
     position: fixed;
     bottom: 2%;
-    right: 30%;
+    right: 15%;
     text-align: center;
-    width: 50%
+    width: 70%
 }
 
 .chat-form input {
