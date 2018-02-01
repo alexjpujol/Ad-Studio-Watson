@@ -49,7 +49,7 @@ app.post('/message',  function(req, res) {
             console.log('error:', err);
         }
         else {
-            console.log(response.intents);
+            console.log(response);
             return res.send(JSON.stringify(response, null, 2));
         }
       });
