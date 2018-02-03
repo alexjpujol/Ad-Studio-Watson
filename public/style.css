@@ -119,9 +119,9 @@ li {
 
 /* transition when chat appears */
 
-.on-appear {
+/* .on-appear {
     transform: translateY(50px)
-}
+} */
 
 
 .chat-form {

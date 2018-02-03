@@ -27,7 +27,7 @@ let previousContext = null;
 
 app.post('/message',  function(req, res) {
 
-    let watsonPayload = {
+    const watsonPayload = {
         workspace_id: process.env.CONVERSATION_WORKSPACE_ID
     }
 
@@ -44,7 +44,7 @@ app.post('/message',  function(req, res) {
         watsonPayload.context = previousContext;
     }
 
-    conversation.message(watsonPayload,  function(err, response) {
+    conversation.message(watsonPayload,  (err, response) => {
         if (err) {
             console.log('error:', err);
         }

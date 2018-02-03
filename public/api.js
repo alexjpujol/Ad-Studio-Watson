@@ -1,20 +1,15 @@
 (function() {
 
-    let apiEndpoint = "/message";
-    let submitButton = document.getElementById("submit_chat");
-    let textInput = document.getElementById("chat_input");
-    let convo = document.getElementById("conversation_list");
-    let requestHeaders = {'Content-type': 'application/json'};
-    let chatID = Math.floor(Math.random() * 1000000);
+    const apiEndpoint = "/message";
+    const submitButton = document.getElementById("submit_chat");
+    const textInput = document.getElementById("chat_input");
+    const convo = document.getElementById("conversation_list");
+    const requestHeaders = {'Content-type': 'application/json'};
+    const chatID = Math.floor(Math.random() * 1000000);
 
 
-    function getUserChat() {
-        let chatText = textInput.value;
-        return chatText;
-    }
-
-    function buildWatsonChatNode(chatResponse) {
-        let chatNode = document.createElement("li");
+    const buildWatsonChatNode = (chatResponse) => {
+        const chatNode = document.createElement("li");
         chatNode.className = "watson_chat speech-bubble on-appear"
         chatNode.innerText = chatResponse;
         convo.appendChild(chatNode);
@@ -27,10 +22,10 @@
         return;
     }
 
-    function buildUserChatNode() {
+    const buildUserChatNode = () => {
         let chatNode = document.createElement("li");
         chatNode.className = "user_chat speech-bubble";
-        chatNode.innerText = getUserChat();
+        chatNode.innerText = textInput.value;
         convo.appendChild(chatNode);
         scrollChat();
         return;
@@ -43,16 +38,16 @@
         }
     }
 
-    let context = ContextGenerator();
+    const context = ContextGenerator();
 
-    function sendWatsonChat() {
+    const sendWatsonChat = () => {
 
-        let chatText = getUserChat();
-        let currentContext = context.next().value;
+        const chatText = textInput.value;
+        const currentContext = context.next().value;
         
         textInput.value = "";
 
-        let options = {
+        const options = {
             method: "POST",
             headers: requestHeaders,
             body: JSON.stringify({input: 
@@ -66,7 +61,7 @@
                 return res.json();
             }
         }).then((data) => {
-            let chatResponse = data.output.text[0];
+            const chatResponse = data.output.text[0] ? data.output.text[0] : "Sorry, I didn't understand that.";
             buildWatsonChatNode(chatResponse);
         }).catch((error) => {
             console.error(error);
@@ -79,7 +74,7 @@
     //attach event handler
     submitButton.addEventListener("click", buildUserChatNode);
     submitButton.addEventListener("click", sendWatsonChat);
-    textInput.addEventListener("keydown", function(e) {
+    textInput.addEventListener("keydown", (e) => {
         if (e.keyCode == 13) {
             buildUserChatNode();
             sendWatsonChat();
@@ -88,9 +83,9 @@
     });
 
     //scroll the chat
-    function scrollChat() {
-        let div = document.getElementById("conversation");
-        let isScrolledToBottom = div.scrollHeight - div.clientHeight <= div.scrollTop + 1;
+    const scrollChat = () => {
+        const div = document.getElementById("conversation");
+        const isScrolledToBottom = div.scrollHeight - div.clientHeight <= div.scrollTop + 1;
 
         if (!isScrolledToBottom) {
             div.scrollTop = div.scrollHeight - div.clientHeight;
