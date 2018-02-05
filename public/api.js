@@ -10,13 +10,12 @@
 
     const buildWatsonChatNode = (chatResponse) => {
         const chatNode = document.createElement("li");
-        chatNode.className = "watson_chat speech-bubble on-appear"
+        chatNode.className = "watson_chat speech-bubble on-appear-watson"
         chatNode.innerText = chatResponse;
         convo.appendChild(chatNode);
         setTimeout(() => {
-            chatNode.classList.remove("on-appear")
-        }, 300)
-        //chatNode.classList.remove("on-appear");
+            chatNode.classList.remove("on-appear-watson")
+        }, 600)
 
         scrollChat();
         return;
@@ -24,9 +23,13 @@
 
     const buildUserChatNode = () => {
         const chatNode = document.createElement("li");
-        chatNode.className = "user_chat speech-bubble";
+        chatNode.className = "user_chat speech-bubble on-appear-user";
         chatNode.innerText = textInput.value;
         convo.appendChild(chatNode);
+        setTimeout(() => {
+            chatNode.classList.remove("on-appear-user")
+        }, 100)
+
         scrollChat();
         return;
     }

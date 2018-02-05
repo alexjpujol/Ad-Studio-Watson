@@ -53,6 +53,7 @@ li {
     margin: 2%;
     box-shadow: 3px 3px 10px darkgrey;
     transition: box-shadow 0.3s ease-in-out;
+    transition: transform 0.2s ease-out;
 }
 
 .watson_chat:hover, .user_chat:hover {
@@ -94,6 +95,7 @@ li {
     color: white;
     box-shadow: 3px 3px 10px darkgrey;
     transition: box-shadow 0.3s ease-in-out;
+    transition: transform 0.2s ease-in-out;
 }
 
 .speech-bubble.user_chat {
@@ -119,9 +121,15 @@ li {
 
 /* transition when chat appears */
 
-/* .on-appear {
-    transform: translateY(50px)
-} */
+.on-appear-watson {
+    opacity: 0;
+    transform: translateX(-60px);
+}
+
+.on-appear-user {
+    opacity: 0;
+    transform: translateX(60px);
+}
 
 
 .chat-form {
