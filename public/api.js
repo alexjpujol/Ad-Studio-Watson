@@ -23,7 +23,7 @@
     }
 
     const buildUserChatNode = () => {
-        let chatNode = document.createElement("li");
+        const chatNode = document.createElement("li");
         chatNode.className = "user_chat speech-bubble";
         chatNode.innerText = textInput.value;
         convo.appendChild(chatNode);
@@ -56,16 +56,21 @@
             })
         }
 
-        fetch(apiEndpoint, options).then((res) => {
+        console.time("Getting Watson's chat");
+
+        fetch(apiEndpoint, options).then(res => {
             if(res.status == 200) {
                 return res.json();
             }
-        }).then((data) => {
+        })
+        .then(data => {
             const chatResponse = data.output.text[0] ? data.output.text[0] : "Sorry, I didn't understand that.";
             buildWatsonChatNode(chatResponse);
-        }).catch((error) => {
+        })
+        .catch(error => {
             console.error(error);
-        })  
+        })
+        console.timeEnd("Getting Watson's chat");  
     }
 
     //initiate the chat
